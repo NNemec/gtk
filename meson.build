@@ -322,8 +322,10 @@ if os_unix
 endif
 gmodule_dep    = dependency('gmodule-2.0', version: glib_req,
                             fallback : ['glib', 'libgmodule_dep'])
-cairo_dep      = dependency('cairo', version: cairo_req, required : cc.get_id() != 'msvc')
-cairogobj_dep  = dependency('cairo-gobject', version: cairo_req, required : cc.get_id() != 'msvc')
+cairo_dep      = dependency('cairo', version: cairo_req,
+                            fallback : ['cairo', 'libcairo_dep'])
+cairogobj_dep  = dependency('cairo-gobject', version: cairo_req,
+                            fallback : ['cairo', 'libcairogobject_dep'])
 pango_dep      = dependency('pango', version: pango_req,
                             fallback : ['pango', 'libpango_dep'])
 fribidi_dep    = dependency('fribidi', version: fribidi_req,
