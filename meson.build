@@ -374,7 +374,8 @@ pixbuf_dep     = dependency('gdk-pixbuf-2.0', version: gdk_pixbuf_req,
                             fallback : ['gdk-pixbuf', 'gdkpixbuf_dep'])
 epoxy_dep      = dependency('epoxy', version: epoxy_req,
                             fallback: ['libepoxy', 'libepoxy_dep'])
-atk_dep        = dependency('atk', version: atk_req)
+atk_dep        = dependency('atk', version: atk_req,
+                            fallback: ['atk', 'libatk_dep'])
 harfbuzz_dep   = dependency('harfbuzz', version: '>= 0.9', required: false,
                             fallback: ['harfbuzz', 'libharfbuzz_dep'])
 xkbdep         = dependency('xkbcommon', version: xkbcommon_req, required: wayland_enabled)
@@ -894,8 +895,10 @@ if os_unix
                  install_dir: pkg_install_dir)
 endif
 
-subdir('po')
-subdir('po-properties')
+if find_program('xgettext', required : false).found()
+  subdir('po')
+  subdir('po-properties')
+endif
 
 if get_option('documentation')
   subdir('docs/tools')

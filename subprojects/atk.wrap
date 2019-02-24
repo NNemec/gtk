@@ -1,0 +1,4 @@
+[wrap-git]
+directory=atk
+url=https://github.com/GNOME/atk.git
+revision=master
