@@ -363,7 +363,7 @@ endif
 
 if win32_enabled
   # for GTK_IM_CONTEXT_IME
-  pangowin32_dep  = dependency('pangowin32')
+  pangowin32_dep  = dependency('pangowin32', fallback : ['pango', 'libpangowin32_dep'])
 endif
 
 pangocairo_dep = dependency('pangocairo', version: cairo_req,
