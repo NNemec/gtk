@@ -6,4 +6,4 @@ function meson {
     python3 ..\meson\meson.py @params
 }
 
-meson .\builddir -Dintrospection=false "-Dpango:gir=false"
+meson .\builddir -Dintrospection=false "-Dpango:gir=false" "-Dgdk-pixbuf:gir=false" "-Datk:introspection=false"
